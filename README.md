@@ -16,7 +16,7 @@ Game should represents an mobile first person shooter, designed for Android mobi
 - [ ] ~~Set up uMVCS architecture~~
 - [x] Integrate Zenject DI framework
 - [x] Set up basic architecture
-- [ ] Model simple location
+- [x] Model simple location
 - [ ] Model simple enemy
 - [ ] Model weapon (optional)
 - [ ] Model trophy

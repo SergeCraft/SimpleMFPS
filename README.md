@@ -17,7 +17,7 @@ Game should represents an mobile first person shooter, designed for Android mobi
 - [x] Integrate Zenject DI framework
 - [x] Set up basic architecture
 - [x] Model simple location
-- [ ] Model simple enemy
+- [x] Model simple enemy
 - [ ] Model weapon (optional)
 - [ ] Model trophy
 - [ ] Model bullet

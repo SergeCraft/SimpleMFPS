@@ -19,8 +19,8 @@ Game should represents an mobile first person shooter, designed for Android mobi
 - [x] Model simple location
 - [x] Model simple enemy
 - [ ] Model weapon (optional)
-- [ ] Model trophy
-- [ ] Model bullet
+- [x] Model trophy
+- [x] Model bullet
 - [ ] Code enemy spawner
 - [ ] Code enemy controller (moving, attack, HP, config, dying)
 - [ ] Code bullet spawner

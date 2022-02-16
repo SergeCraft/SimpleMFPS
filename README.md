@@ -13,8 +13,9 @@ Game should represents an mobile first person shooter, designed for Android mobi
 
 - [x] Try MFPController
 - [x] Try to build for Android device
-- [ ] Set up uMVCS architecture
-- [ ] Integrate Zenject DI framework
+- [ ] ~~Set up uMVCS architecture~~
+- [x] Integrate Zenject DI framework
+- [x] Set up basic architecture
 - [ ] Model simple location
 - [ ] Model simple enemy
 - [ ] Model weapon (optional)

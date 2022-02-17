@@ -11,6 +11,8 @@ public class GameInstaller : MonoInstaller
 		
 		Container.Bind<ISettingsManager>().To<SimpleSettingsManager>().AsSingle();
 		Container.Bind<ISettings>().To<SimpleSettings>().AsSingle();
+		Container.Bind<IPlayerManager>().To<SimplePlayerManager>().AsSingle();
+		Container.Bind<IGameManager>().To<SimpleGameManager>().AsSingle();
 		
 		Debug.Log("Bindings installed successfully");
 	}

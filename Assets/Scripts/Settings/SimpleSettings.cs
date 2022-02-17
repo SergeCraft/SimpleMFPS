@@ -16,7 +16,7 @@ public class SimpleSettings: ISettings
     public float EnemyInitialHP { get; private set; }
 
     public Vector3 PlayerInitialPosition { get; private set; }
-
+    
     #endregion
 
     #region Constructors

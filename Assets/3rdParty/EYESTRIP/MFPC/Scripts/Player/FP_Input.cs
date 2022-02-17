@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
-public class FP_Input : MonoBehaviour 
+public class FP_Input : MonoBehaviour
 {
     public bool UseMobileInput = true;
     public Inputs mobileInputs;
@@ -47,7 +47,7 @@ public class FP_Input : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class Inputs
 {
     public FP_Joystick moveJoystick;

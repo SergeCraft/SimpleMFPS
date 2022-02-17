@@ -47,7 +47,7 @@ public class SimplePlayerManager: IPlayerManager
 
     public void DestroyPlayer()
     {
-        throw new System.NotImplementedException();
+        ;
     }
     #endregion
 

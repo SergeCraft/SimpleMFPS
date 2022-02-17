@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class FP_FastTurn : MonoBehaviour
 {
+    public static bool turn;
     public float turnSpeed = 5.5F;
     public float turnAngle = 180;
     public Button leftTurn, rightTurn;
-    private Transform thisT;
-    public static bool turn;
     private Quaternion targetRotation;
-	// Use this for initialization
-	void Start () 
+
+    private Transform thisT;
+
+    // Use this for initialization
+    private void Start()
     {
         thisT = transform;
         leftTurn.onClick.AddListener(LeftTurn);
         rightTurn.onClick.AddListener(RightTurn);
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
             LeftTurn();
@@ -28,21 +29,24 @@ public class FP_FastTurn : MonoBehaviour
 
         if (thisT.rotation != targetRotation)
         {
-            if (turn == true)
-                thisT.rotation = Quaternion.RotateTowards(thisT.rotation, targetRotation, turnSpeed * 100 * Time.deltaTime);
+            if (turn)
+                thisT.rotation =
+                    Quaternion.RotateTowards(thisT.rotation, targetRotation, turnSpeed * 100 * Time.deltaTime);
         }
         else
+        {
             turn = false;
-	}
+        }
+    }
 
 
-    void LeftTurn()
+    private void LeftTurn()
     {
         targetRotation = Quaternion.AngleAxis(turnAngle, transform.up) * thisT.rotation;
         turn = true;
     }
 
-    void RightTurn()
+    private void RightTurn()
     {
         targetRotation = Quaternion.AngleAxis(-turnAngle, transform.up) * thisT.rotation;
         turn = true;

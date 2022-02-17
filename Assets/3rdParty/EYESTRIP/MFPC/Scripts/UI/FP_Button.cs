@@ -1,25 +1,24 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 [RequireComponent(typeof(CanvasGroup))]
 [RequireComponent(typeof(EventTrigger))]
 public class FP_Button : MonoBehaviour
 {
-    public Canvas myCanvas;                                     //Canvas object;
-    public float defaultAlpha = 0.5F, activeAlpha = 1.0F;       //Alpha values;
-    public bool Interactable = true;                            //Is button interactable or not;
-    public bool Dynamic;                                        //Is button dynamic (moving with touch) or not;
+    public Canvas myCanvas; //Canvas object;
+    public float defaultAlpha = 0.5F, activeAlpha = 1.0F; //Alpha values;
+    public bool Interactable = true; //Is button interactable or not;
+    public bool Dynamic; //Is button dynamic (moving with touch) or not;
+    private CanvasGroup canvasGroup;
+    private Vector2 defaultPos, targetPos;
+    private EventTrigger eventTrigger;
 
     private bool isPressed, toggle, clicked, released;
-    private CanvasGroup canvasGroup;
-    private EventTrigger eventTrigger;
-    private Vector2 touchInput, prevDelta, dragInput;
-    private Vector2 defaultPos, targetPos;
     private RectTransform rect;
+    private Vector2 touchInput, prevDelta, dragInput;
 
-    void Start()
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = defaultAlpha;
@@ -29,7 +28,7 @@ public class FP_Button : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         touchInput = (dragInput - prevDelta) / Time.deltaTime;
         prevDelta = dragInput;
@@ -40,9 +39,11 @@ public class FP_Button : MonoBehaviour
                 canvasGroup.alpha = activeAlpha;
         }
         else
+        {
             canvasGroup.alpha = defaultAlpha;
+        }
 
-        if(Dynamic)
+        if (Dynamic)
         {
             if (isPressed)
             {
@@ -52,19 +53,21 @@ public class FP_Button : MonoBehaviour
                 rect.position = myCanvas.transform.TransformPoint(targetPos);
             }
             else
+            {
                 rect.anchoredPosition = defaultPos;
+            }
         }
     }
 
     //Setup events listeners;
-    void SetupListeners()
+    private void SetupListeners()
     {
         eventTrigger = gameObject.GetComponent<EventTrigger>();
 
         var a = new EventTrigger.TriggerEvent();
         a.AddListener(data =>
         {
-            var evData = (PointerEventData)data;
+            var evData = (PointerEventData) data;
             data.Use();
             isPressed = true;
             toggle = !toggle;
@@ -72,18 +75,18 @@ public class FP_Button : MonoBehaviour
             StartCoroutine("WasClicked");
         });
 
-        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = a, eventID = EventTriggerType.PointerDown });
+        eventTrigger.triggers.Add(new EventTrigger.Entry {callback = a, eventID = EventTriggerType.PointerDown});
 
 
         var b = new EventTrigger.TriggerEvent();
         b.AddListener(data =>
         {
-            var evData = (PointerEventData)data;
+            var evData = (PointerEventData) data;
             data.Use();
             dragInput = evData.position;
         });
 
-        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = b, eventID = EventTriggerType.Drag });
+        eventTrigger.triggers.Add(new EventTrigger.Entry {callback = b, eventID = EventTriggerType.Drag});
 
 
         var c = new EventTrigger.TriggerEvent();
@@ -94,17 +97,17 @@ public class FP_Button : MonoBehaviour
             StartCoroutine("WasReleased");
         });
 
-        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = c, eventID = EventTriggerType.PointerUp });
+        eventTrigger.triggers.Add(new EventTrigger.Entry {callback = c, eventID = EventTriggerType.PointerUp});
     }
 
-    IEnumerator WasClicked()
+    private IEnumerator WasClicked()
     {
         clicked = true;
         yield return null;
         clicked = false;
     }
 
-    IEnumerator WasReleased()
+    private IEnumerator WasReleased()
     {
         released = true;
         yield return null;
@@ -141,4 +144,3 @@ public class FP_Button : MonoBehaviour
         return toggle;
     }
 }
-

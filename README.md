@@ -22,6 +22,8 @@ Game should represents an mobile first person shooter, designed for Android mobi
 - [x] Model trophy
 - [x] Model bullet
 - [x] Code settings
+- [x] Code game manager and entrypoint
+- [ ] Code event system
 - [ ] Code player manager
 - [ ] Code enemy spawner
 - [ ] Code enemy controller (moving, attack, HP, config, dying)

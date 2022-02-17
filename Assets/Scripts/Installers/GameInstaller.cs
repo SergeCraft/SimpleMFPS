@@ -7,6 +7,11 @@ public class GameInstaller : MonoInstaller
 {
 	public override void InstallBindings()
 	{
-		;
+		Debug.Log("Installing bindings...");
+		
+		Container.Bind<ISettingsManager>().To<SimpleSettingsManager>().AsSingle();
+		Container.Bind<ISettings>().To<SimpleSettings>().AsSingle();
+		
+		Debug.Log("Bindings installed successfully");
 	}
 }

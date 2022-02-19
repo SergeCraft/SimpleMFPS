@@ -1,6 +1,6 @@
 public enum GameStates
 {
     NotStarted,
-    Play,
+    Started,
     Stopped
 }

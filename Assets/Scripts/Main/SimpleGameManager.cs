@@ -1,12 +1,15 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class SimpleGameManager : IGameManager
+public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITickable
 {
     #region Fields
 
     private IPlayerManager _playerManager;
+    private SignalBus _signalBus;
 
     #endregion
 
@@ -20,11 +23,15 @@ public class SimpleGameManager : IGameManager
 
     #region Constructors
 
-    public SimpleGameManager(ISettings stg, IPlayerManager playerMgr)
+    public SimpleGameManager(
+        ISettings stg,
+        IPlayerManager playerMgr,
+        SignalBus signalBus)
     {
         State = GameStates.NotStarted;
         Settings = stg;
         _playerManager = playerMgr;
+        _signalBus = signalBus;
         StartGame();
     }
 
@@ -34,6 +41,16 @@ public class SimpleGameManager : IGameManager
     #region Public methods
 
     
+    public void Initialize()
+    {
+        _signalBus.Subscribe<TestGameEvent>(TestEventHandler);
+    }
+
+
+    public void Dispose()
+    {
+        _signalBus.Unsubscribe<TestGameEvent>(TestEventHandler);
+    }
 
     #endregion
 
@@ -41,9 +58,8 @@ public class SimpleGameManager : IGameManager
 
     private void StartGame()
     {
-        _playerManager.SpawnPlayer();
         DisableStartCamera();
-        State = GameStates.Play;
+        State = GameStates.Started;
     }
 
     private void DisableStartCamera()
@@ -52,4 +68,18 @@ public class SimpleGameManager : IGameManager
     }
 
     #endregion
+
+    #region Event handlers
+    
+    private void TestEventHandler()
+    {
+        Debug.Log("Test event fired");
+    }
+
+    #endregion
+
+    public void Tick()
+    {
+        ;
+    }
 }

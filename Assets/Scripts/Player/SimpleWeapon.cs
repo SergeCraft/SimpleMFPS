@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class SimpleWeaponScript : MonoBehaviour
+public class SimpleWeapon : MonoBehaviour
 {
+    private SignalBus signalBus;
+    
+    private float delay;
+    
     public FP_Input playerInput;
 
     public float shootRate = 0.15F;
 
-    private float delay;
-
+    [Inject]
+    public void Construct(SignalBus signalBus)
+    {
+        this.signalBus = signalBus;
+    }
+    
     void Start () 
     {
         
@@ -25,6 +34,7 @@ public class SimpleWeaponScript : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Simple bang");
+        signalBus.Fire(new PlayerHitSignal(15));
         delay = Time.time + shootRate;
     }
 }

@@ -1,5 +1,8 @@
 
-public class IGameManager
+using System;
+using Zenject;
+
+public interface IGameManager
 {
     public GameStates State { get; }
     

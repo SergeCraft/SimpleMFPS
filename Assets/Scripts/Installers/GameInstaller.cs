@@ -12,7 +12,14 @@ public class GameInstaller : MonoInstaller
 		Container.Bind<ISettingsManager>().To<SimpleSettingsManager>().AsSingle();
 		Container.Bind<ISettings>().To<SimpleSettings>().AsSingle();
 		Container.Bind<IPlayerManager>().To<SimplePlayerManager>().AsSingle();
-		Container.Bind<IGameManager>().To<SimpleGameManager>().AsSingle();
+		Container.BindInterfacesAndSelfTo<SimpleGameManager>().AsSingle();
+
+		
+		SignalBusInstaller.Install(Container);
+		Container.DeclareSignal<TestGameEvent>();
+		Container.DeclareSignal<PlayerHitSignal>();
+		Container.DeclareSignal<PlayerDeadSignal>();
+		
 		
 		Debug.Log("Bindings installed successfully");
 	}

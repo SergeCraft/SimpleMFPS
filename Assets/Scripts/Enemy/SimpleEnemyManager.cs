@@ -13,6 +13,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     private IGameManager _gameManager;
     private IPlayer _player;
     private Camera _playerCamera;
+    private Transform _playerHead;
     private ISettings _settings;
     private Bounds _levelBounds;
     private float _lastSpawnTime;
@@ -43,6 +44,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         _playerCamera = player.MFPController.transform.
             GetChild(0).GetChild(0).GetChild(0)
             .GetComponent<Camera>();
+        _playerHead = player.MFPController.transform.GetChild(0).GetChild(0);
         _settings = settings;
         _levelBounds = GetLevelBounds();
         _lastSpawnTime = Time.time;
@@ -108,8 +110,8 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     private Vector3 GetSpawnPosition()
     {
-        float camFOVDegreesLeft = _playerCamera.transform.rotation.eulerAngles.y - _playerCamera.fieldOfView + 360;
-        float camFOVDegreesRight = _playerCamera.transform.rotation.eulerAngles.y + _playerCamera.fieldOfView;
+        float camFOVDegreesLeft = _playerHead.eulerAngles.y - _playerCamera.fieldOfView + 90 + 360;
+        float camFOVDegreesRight = _playerHead.eulerAngles.y + _playerCamera.fieldOfView + 90;
         float spawnPositionDirection = Random.Range(camFOVDegreesRight, camFOVDegreesLeft);
         Vector3 playerPosition = _player.MFPController.transform.GetChild(0).position;
         Ray spawnPositionHorizontalRay = new Ray(

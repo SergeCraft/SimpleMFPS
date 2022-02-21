@@ -10,6 +10,6 @@ public static class Helper
       
     public static Vector3 DegreeToVector3(float degree)
     {
-        return RadianToVector3((degree + 90) * Mathf.Deg2Rad);
+        return RadianToVector3((degree) * Mathf.Deg2Rad);
     }
 }

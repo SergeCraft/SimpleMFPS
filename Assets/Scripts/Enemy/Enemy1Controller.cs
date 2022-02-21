@@ -49,7 +49,10 @@ public class Enemy1Controller : MonoBehaviour
             case "Level":
                 _isGrounded = true;
                 _actualSpeed.y = 0.0f;
-                transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
+                transform.position = new Vector3(
+                    transform.position.x,
+                    transform.position.y,
+                    transform.position.z);
                 break;
         }
 

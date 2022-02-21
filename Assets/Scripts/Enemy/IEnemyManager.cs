@@ -6,7 +6,8 @@ public interface IEnemyManager
 {
     #region Properties
 
-    List<IEnemy> Enemies { get; }
+    //List<IEnemy> Enemies { get; }
+    List<MonoBehaviour> Enemies { get; }
 
     #endregion
 

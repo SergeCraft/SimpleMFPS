@@ -5,9 +5,13 @@ using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
+	private GameObject _enemyPrefab;
+	
 	public override void InstallBindings()
 	{
 		Debug.Log("Installing bindings...");
+		
+		_enemyPrefab = Resources.Load<GameObject>("Prefabs/Enemy1");
 		
 		Container.Bind<ISettingsManager>().To<SimpleSettingsManager>().AsSingle();
 		Container.Bind<ISettings>().To<SimpleSettings>().AsSingle();
@@ -15,7 +19,10 @@ public class GameInstaller : MonoInstaller
 		Container.BindInterfacesAndSelfTo<SimplePlayerManager>().AsSingle();
 		//Container.BindInterfacesTo<SimpleTrophy>().AsTransient();
 		Container.BindInterfacesAndSelfTo<SimpleTrophyManager>().AsSingle();
-		Container.BindInterfacesAndSelfTo<SimpleEnemyManager>().AsSingle();
+		Container.BindInterfacesTo<SimpleEnemyManager>().AsSingle();
+		Container.BindFactory<Vector3, Enemy1Controller, 
+				Enemy1Controller.Factory>()
+			.FromComponentInNewPrefab(_enemyPrefab);
 		// Container.BindInterfacesTo<SimpleEnemy>().AsTransient();
 		// Container.BindInterfacesTo<SimpleBulletManager>().AsSingle();
 		// Container.BindInterfacesTo<SimpleBullet>().AsTransient();

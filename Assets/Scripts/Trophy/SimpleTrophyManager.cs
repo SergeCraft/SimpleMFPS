@@ -69,7 +69,7 @@ public class SimpleTrophyManager : ITrophyManager, IDisposable
         TrophyTypes randomTrophyType = (TrophyTypes) Random.Range(1, 3);
         Trophies.Add(new SimpleTrophy(
             _lastID++,
-            args.Enemy.EnemyGameObject.transform.position));
+            args.Enemy.transform.position));
     }
 
     public void OnPlayerPickedTrophy(TrophyPickedSignal args)

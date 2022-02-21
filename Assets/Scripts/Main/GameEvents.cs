@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class TestGameEvent {}
 
 public class PlayerHitSignal
@@ -24,9 +26,9 @@ public class GameRestartSignal
 
 public class EnemyDeadSignal
 {
-    public IEnemy Enemy { get; private set; }
+    public MonoBehaviour Enemy { get; private set; }
 
-    public EnemyDeadSignal(IEnemy enemy)
+    public EnemyDeadSignal(MonoBehaviour enemy)
     {
         Enemy = enemy;
     }

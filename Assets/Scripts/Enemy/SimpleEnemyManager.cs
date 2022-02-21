@@ -17,14 +17,14 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     private Bounds _levelBounds;
     private float _lastSpawnTime;
     private bool _isEnemySpawnActive;
-    private GameObject _enemyprefab;
-    
+
+    private readonly Enemy1Controller.Factory _enemyFactory;
 
     #endregion
 
     #region Properties
 
-    public List<IEnemy> Enemies { get; private set; }
+    public List<MonoBehaviour> Enemies { get; private set; }
 
     #endregion
 
@@ -34,7 +34,8 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         SignalBus signalBus,
         IGameManager gameManager,
         IPlayer player,
-        ISettings settings)
+        ISettings settings,
+        Enemy1Controller.Factory enemyFactory)
     {
         _signalBus = signalBus;
         _gameManager = gameManager;
@@ -46,9 +47,11 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         _levelBounds = GetLevelBounds();
         _lastSpawnTime = Time.time;
         _isEnemySpawnActive = false;
-        _enemyprefab = GetEnemyPrefab();
+        //_enemyprefab = GetEnemyPrefab();
+        _enemyFactory = enemyFactory;
+        
 
-        Enemies = new List<IEnemy>();
+        Enemies = new List<MonoBehaviour>();
         
         _signalBus.Subscribe<GameRestartSignal>(OnGameRestart);
         
@@ -63,7 +66,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     public void Initialize()
     {
-        //SpawnEnemy();
+        
     }
     
     public void Tick()
@@ -80,8 +83,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     public void SpawnEnemy()
     {
         var spawnPosition = GetSpawnPosition();
-        var enemy = new SimpleEnemy
-            (_signalBus, spawnPosition, _enemyprefab);
+        var enemy = _enemyFactory.Create(spawnPosition);
         Enemies.Add(enemy);
         Debug.Log("Enemy spawned");
         _lastSpawnTime = Time.time;
@@ -91,10 +93,6 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     #region Private methods
 
-    private GameObject GetEnemyPrefab()
-    {
-        return Resources.Load<GameObject>("Prefabs/Enemy1");
-    }
     
     private Bounds GetLevelBounds()
     {
@@ -120,7 +118,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         RaycastHit hit;
         Physics.Raycast(spawnPositionHorizontalRay, out hit);
         Vector3 spawnHorizontalPosition = spawnPositionHorizontalRay
-            .GetPoint(hit.distance * Random.Range(0.1f, 0.9f));
+            .GetPoint(hit.distance * Random.Range(0.3f, 0.9f));
         
         Ray spawnPositionVerticalalRay = new Ray(
             spawnHorizontalPosition, Vector3.down);

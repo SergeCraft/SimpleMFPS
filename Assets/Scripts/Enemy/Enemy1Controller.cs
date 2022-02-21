@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Enemy1Controller : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class Enemy1Controller : MonoBehaviour
     private Vector3 _prevPosition;
     private Vector3 _actualSpeed = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 _speedLimit = new Vector3(2.0f, 3.0f, 2.0f);
+    private SignalBus _signalBus;
+
+    [Inject]
+    public void Construct(Vector3 initPosition, SignalBus signalBus)
+    {
+        transform.position = initPosition;
+        _signalBus = signalBus;
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +31,12 @@ public class Enemy1Controller : MonoBehaviour
     {
         CalculateSpeed();
         ApplyGravity();
+        MoveToPlayer();
+    }
+
+    private void MoveToPlayer()
+    {
+        Debug.Log("Try to move...");
     }
 
     private void CalculateSpeed()
@@ -70,4 +85,13 @@ public class Enemy1Controller : MonoBehaviour
                 break;
         }
     }
+
+    #region Factories
+
+    public class Factory : PlaceholderFactory<Vector3, Enemy1Controller>
+    {
+        
+    }
+
+    #endregion
 }

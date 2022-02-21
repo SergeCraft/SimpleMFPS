@@ -1,18 +1,154 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
+using Random = UnityEngine.Random;
 
-public class SimpleEnemyManager : MonoBehaviour
+public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitializable
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Fields
+
+    private SignalBus _signalBus;
+    private IGameManager _gameManager;
+    private IPlayer _player;
+    private Camera _playerCamera;
+    private ISettings _settings;
+    private Bounds _levelBounds;
+    private float _lastSpawnTime;
+    private bool _isEnemySpawnActive;
+    private GameObject _enemyprefab;
+    
+
+    #endregion
+
+    #region Properties
+
+    public List<IEnemy> Enemies { get; private set; }
+
+    #endregion
+
+    #region Constructors
+
+    public SimpleEnemyManager(
+        SignalBus signalBus,
+        IGameManager gameManager,
+        IPlayer player,
+        ISettings settings)
     {
+        _signalBus = signalBus;
+        _gameManager = gameManager;
+        _player = player;
+        _playerCamera = player.MFPController.transform.
+            GetChild(0).GetChild(0).GetChild(0)
+            .GetComponent<Camera>();
+        _settings = settings;
+        _levelBounds = GetLevelBounds();
+        _lastSpawnTime = Time.time;
+        _isEnemySpawnActive = false;
+        _enemyprefab = GetEnemyPrefab();
+
+        Enemies = new List<IEnemy>();
         
+        _signalBus.Subscribe<GameRestartSignal>(OnGameRestart);
+        
+        Debug.Log("Simple enemy manager instantiated");
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    #endregion
+
+    #region Public methods
+
+    public void Initialize()
+    {
+        //SpawnEnemy();
+    }
+    
+    public void Tick()
+    {
+        TrySpawnEnemy();
+    }
+
+    public void Dispose()
+    {
+        _signalBus.Unsubscribe<GameRestartSignal>(OnGameRestart);
+    }
+
+    
+    public void SpawnEnemy()
+    {
+        var spawnPosition = GetSpawnPosition();
+        var enemy = new SimpleEnemy
+            (_signalBus, spawnPosition, _enemyprefab);
+        Enemies.Add(enemy);
+        Debug.Log("Enemy spawned");
+        _lastSpawnTime = Time.time;
+    }
+    
+    #endregion
+
+    #region Private methods
+
+    private GameObject GetEnemyPrefab()
+    {
+        return Resources.Load<GameObject>("Prefabs/Enemy1");
+    }
+    
+    private Bounds GetLevelBounds()
+    {
+        var bounds = GameObject.Find("Level").GetComponentInChildren<MeshRenderer>().bounds;
+        Debug.Log($"Level bounds defined: { bounds.min } : {bounds.max}");
+        return bounds;
+    }
+
+    private void TrySpawnEnemy()
+    {
+        if(_isEnemySpawnActive && Time.time - _lastSpawnTime >= 3.0f) SpawnEnemy();
+    }
+
+    private Vector3 GetSpawnPosition()
+    {
+        float camFOVDegreesLeft = _playerCamera.transform.rotation.eulerAngles.y - _playerCamera.fieldOfView + 360;
+        float camFOVDegreesRight = _playerCamera.transform.rotation.eulerAngles.y + _playerCamera.fieldOfView;
+        float spawnPositionDirection = Random.Range(camFOVDegreesRight, camFOVDegreesLeft);
+        Vector3 playerPosition = _player.MFPController.transform.GetChild(0).position;
+        Ray spawnPositionHorizontalRay = new Ray(
+            new Vector3(playerPosition.x, 5.9f, playerPosition.z),
+            Helper.DegreeToVector3(spawnPositionDirection));
+        RaycastHit hit;
+        Physics.Raycast(spawnPositionHorizontalRay, out hit);
+        Vector3 spawnHorizontalPosition = spawnPositionHorizontalRay
+            .GetPoint(hit.distance * Random.Range(0.1f, 0.9f));
+        
+        Ray spawnPositionVerticalalRay = new Ray(
+            spawnHorizontalPosition, Vector3.down);
+        Physics.Raycast(spawnPositionVerticalalRay, out hit);
+        Vector3 spawnPosition = hit.point + new Vector3(0.0f, 0.5f, 0.0f);
+        Debug.Log($"Enemy spawned at {spawnPosition}");
+
+        return spawnPosition;
+    }
+
+    #endregion
+
+    #region Event handlers
+
+    public void OnEnemyDead(EnemyDeadSignal args)
+    {
+        Debug.Log("Enemy dead signal captured by manager");
+    }
+
+    public void OnGameRestart()
     {
         
+        _isEnemySpawnActive = true;
     }
+
+    #endregion
+
+
+
+
 }

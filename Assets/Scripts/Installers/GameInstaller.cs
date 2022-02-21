@@ -11,14 +11,19 @@ public class GameInstaller : MonoInstaller
 		
 		Container.Bind<ISettingsManager>().To<SimpleSettingsManager>().AsSingle();
 		Container.Bind<ISettings>().To<SimpleSettings>().AsSingle();
-		Container.Bind<IPlayerManager>().To<SimplePlayerManager>().AsSingle();
 		Container.BindInterfacesAndSelfTo<SimpleGameManager>().AsSingle();
+		Container.BindInterfacesAndSelfTo<SimplePlayerManager>().AsSingle();
 		//Container.BindInterfacesTo<SimpleTrophy>().AsTransient();
-		Container.BindInterfacesTo<SimpleTrophyManager>().AsSingle();
+		Container.BindInterfacesAndSelfTo<SimpleTrophyManager>().AsSingle();
+		Container.BindInterfacesAndSelfTo<SimpleEnemyManager>().AsSingle();
+		// Container.BindInterfacesTo<SimpleEnemy>().AsTransient();
+		// Container.BindInterfacesTo<SimpleBulletManager>().AsSingle();
+		// Container.BindInterfacesTo<SimpleBullet>().AsTransient();
+		Container.BindInstance(new Vector3(0.0f, 0.0f, 0.0f));
 
 		SignalBusInstaller.Install(Container);
 		
-		Container.DeclareSignal<TestGameEvent>();
+		//Container.DeclareSignal<TestGameEvent>();
 		Container.DeclareSignal<PlayerHitSignal>();
 		Container.DeclareSignal<PlayerDeadSignal>();
 		Container.DeclareSignal<GameRestartSignal>();

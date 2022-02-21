@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-public class SimpleTrophyManager : ITrophyManager
+public class SimpleTrophyManager : ITrophyManager, IDisposable
 {
     #region Fields
 
@@ -32,7 +33,8 @@ public class SimpleTrophyManager : ITrophyManager
         _lastID = 0;
 
         Trophies = new List<ITrophy>();
-
+        
+        Debug.Log("Simple trophy manager instantiated");
     }
 
     

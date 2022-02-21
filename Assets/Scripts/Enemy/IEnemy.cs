@@ -7,6 +7,8 @@ public interface IEnemy: IDisposable
     #region Properties
 
     GameObject EnemyGameObject { get; }
+    
+    int HP { get; }
 
     #endregion
 

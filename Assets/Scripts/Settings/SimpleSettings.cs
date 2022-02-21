@@ -38,7 +38,7 @@ public class SimpleSettings: ISettings
         EnemyMaxCount = 3;
         EnemyMinCount = 1;
         EnemyInitialHP = 100.0f;
-        PlayerInitialPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        PlayerInitialPosition = new Vector3(0.0f, 1.2f, 0.0f);
     }
 
     #endregion

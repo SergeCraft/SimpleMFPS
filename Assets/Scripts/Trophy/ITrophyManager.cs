@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public interface ITrophyManager : IDisposable
+public interface ITrophyManager
 {
     #region Properties
 

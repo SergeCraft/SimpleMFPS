@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITickable
+public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitializable
 {
     #region Fields
 
@@ -32,7 +32,8 @@ public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITic
         Settings = stg;
         _playerManager = playerMgr;
         _signalBus = signalBus;
-        StartGame();
+        
+        
     }
 
 
@@ -40,16 +41,21 @@ public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITic
 
     #region Public methods
 
-    
     public void Initialize()
     {
-        _signalBus.Subscribe<TestGameEvent>(TestEventHandler);
+        StartGame();
     }
 
 
     public void Dispose()
     {
-        _signalBus.Unsubscribe<TestGameEvent>(TestEventHandler);
+        ;
+    }
+    
+    
+    public void Tick()
+    {
+        ;
     }
 
     #endregion
@@ -60,6 +66,8 @@ public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITic
     {
         DisableStartCamera();
         State = GameStates.Started;
+        Debug.Log("Game started");
+        _signalBus.Fire<GameRestartSignal>();
     }
 
     private void DisableStartCamera()
@@ -78,8 +86,5 @@ public class SimpleGameManager : IGameManager, IInitializable, IDisposable, ITic
 
     #endregion
 
-    public void Tick()
-    {
-        ;
-    }
+
 }

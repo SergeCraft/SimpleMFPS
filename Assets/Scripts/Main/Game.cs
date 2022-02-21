@@ -9,7 +9,7 @@ public class Game : MonoBehaviour
    private IGameManager _gameManager;
    
    [Inject]
-   public void Construct(IGameManager gameMgr)
+   public void Construct(IGameManager gameMgr, SignalBus signalBus)
    {
       _gameManager = gameMgr;
    }

@@ -32,8 +32,6 @@ public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitiali
         Settings = stg;
         _playerManager = playerMgr;
         _signalBus = signalBus;
-        
-        
     }
 
 
@@ -79,11 +77,6 @@ public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitiali
 
     #region Event handlers
     
-    private void TestEventHandler()
-    {
-        Debug.Log("Test event fired");
-    }
-
     #endregion
 
 

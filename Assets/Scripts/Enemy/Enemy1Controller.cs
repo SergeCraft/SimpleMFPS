@@ -9,8 +9,10 @@ public class Enemy1Controller : MonoBehaviour
     private bool _isGrounded;
     private Vector3 _prevPosition;
     private Vector3 _actualSpeed = new Vector3(0.0f, 0.0f, 0.0f);
-    private Vector3 _speedLimit = new Vector3(2.0f, 3.0f, 2.0f);
+    private Vector3 _speedLimit = new Vector3(1.0f, 3.0f, 1.0f);
     private SignalBus _signalBus;
+
+    public int HP;
 
     [Inject]
     public void Construct(Vector3 initPosition, SignalBus signalBus)
@@ -24,6 +26,7 @@ public class Enemy1Controller : MonoBehaviour
     {
         _isGrounded = false;
         _prevPosition = transform.position;
+        HP = 100;
     }
 
     // Update is called once per frame
@@ -36,7 +39,26 @@ public class Enemy1Controller : MonoBehaviour
 
     private void MoveToPlayer()
     {
-        Debug.Log("Try to move...");
+        Transform player = GameObject.Find("Player").transform.GetChild(0);
+        Vector3 targetDirection = new Vector3(
+            player.position.x - transform.position.x,
+            0.0f,
+            player.position.z - transform.position.z
+        );
+            
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(
+            transform.forward,
+            targetDirection,
+            0.5f, 0.0f));
+    
+        if (Vector3.Distance(transform.position, player.position) > 2.0f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(player.position.x,transform.position.y, player.position.z),
+                1.0f*Time.deltaTime);
+        }
+        
     }
 
     private void CalculateSpeed()
@@ -48,11 +70,14 @@ public class Enemy1Controller : MonoBehaviour
     {
         if (!_isGrounded)
         {
-            _actualSpeed.y = Mathf.Abs(_actualSpeed.y) < _speedLimit.y? 
-                _actualSpeed.y + Physics.gravity.y / 5 * Time.deltaTime 
-                : Mathf.Sign(_actualSpeed.y) *_speedLimit.y;
-            
-            transform.Translate(_actualSpeed * Time.deltaTime, Space.World);
+            // _actualSpeed.y = Mathf.Abs(_actualSpeed.y) < _speedLimit.y? 
+            //     _actualSpeed.y + Physics.gravity.y / 5 * Time.deltaTime 
+            //     : Mathf.Sign(_actualSpeed.y) *_speedLimit.y;
+            // transform.Translate(_actualSpeed * Time.deltaTime, Space.World);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(transform.position.x, 0.0f,transform.position.z),
+                3.0f*Time.deltaTime);
         }
     }
 
@@ -69,10 +94,19 @@ public class Enemy1Controller : MonoBehaviour
                     transform.position.y,
                     transform.position.z);
                 break;
+            case "Bullet":
+                TakeDamage(50);
+                break;            
         }
 
         ;
 
+    }
+
+    private void TakeDamage(int damage)
+    {
+        HP -= damage;
+        if(HP <= 0) _signalBus.Fire(new EnemyDeadSignal(this));
     }
 
 

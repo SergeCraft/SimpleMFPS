@@ -86,8 +86,8 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         var spawnPosition = GetSpawnPosition();
         var enemy = _enemyFactory.Create(spawnPosition);
         Enemies.Add(enemy);
-        Debug.Log("Enemy spawned");
         _lastSpawnTime = Time.time;
+        Debug.Log($"Enemy spawned at {spawnPosition}");
     }
     
     #endregion
@@ -125,7 +125,6 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
             spawnHorizontalPosition, Vector3.down);
         Physics.Raycast(spawnPositionVerticalalRay, out hit);
         Vector3 spawnPosition = hit.point + new Vector3(0.0f, 0.5f, 0.0f);
-        Debug.Log($"Enemy spawned at {spawnPosition}");
 
         return spawnPosition;
     }
@@ -137,6 +136,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     public void OnEnemyDead(EnemyDeadSignal args)
     {
         Debug.Log("Enemy dead signal captured by manager");
+        Enemies.Remove(args.Enemy);
     }
 
     public void OnGameRestart()

@@ -11,6 +11,10 @@ public class Enemy1Controller : MonoBehaviour
     private Vector3 _actualSpeed = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 _speedLimit = new Vector3(1.0f, 3.0f, 1.0f);
     private SignalBus _signalBus;
+    private bool _isAttacking = false;
+    private float _lastAttakBeginTime = 0.0f;
+    private float _attackTime = 1.0f;
+    private int _attackDamage = 5;
 
     public int HP;
 
@@ -57,8 +61,42 @@ public class Enemy1Controller : MonoBehaviour
                 transform.position,
                 new Vector3(player.position.x,transform.position.y, player.position.z),
                 1.0f*Time.deltaTime);
+        };
+
+        if (Vector3.Distance(transform.position, player.position) < 2.2f)
+        {
+            Attack();
         }
-        
+        else
+        {
+            InterruptAttack();
+        }
+
+
+    }
+
+    private void InterruptAttack()
+    {
+        _isAttacking = false;
+        _lastAttakBeginTime = 0.0f;
+    }
+
+    private void Attack()
+    {
+        if (_isAttacking)
+        {
+            if (Time.time - _lastAttakBeginTime > _attackTime)
+            {
+                _signalBus.Fire(new PlayerHitSignal(_attackDamage));
+                InterruptAttack();
+            }
+                
+        }
+        else
+        {
+            _isAttacking = true;
+            _lastAttakBeginTime = Time.time;
+        };
     }
 
     private void CalculateSpeed()

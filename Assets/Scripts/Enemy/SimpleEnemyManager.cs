@@ -49,7 +49,6 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         _levelBounds = GetLevelBounds();
         _lastSpawnTime = Time.time;
         _isEnemySpawnActive = false;
-        //_enemyprefab = GetEnemyPrefab();
         _enemyFactory = enemyFactory;
         
 
@@ -110,9 +109,9 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     private Vector3 GetSpawnPosition()
     {
-        float camFOVDegreesLeft = _playerHead.eulerAngles.y - _playerCamera.fieldOfView + 90 + 360;
-        float camFOVDegreesRight = _playerHead.eulerAngles.y + _playerCamera.fieldOfView + 90;
-        float spawnPositionDirection = Random.Range(camFOVDegreesRight, camFOVDegreesLeft);
+        float camFOVDegreesLeft = -_playerHead.eulerAngles.y + _playerCamera.fieldOfView;
+        float camFOVDegreesRight = -_playerHead.eulerAngles.y - _playerCamera.fieldOfView;
+        float spawnPositionDirection = Random.Range(camFOVDegreesRight, camFOVDegreesLeft) + 270;
         Vector3 playerPosition = _player.MFPController.transform.GetChild(0).position;
         Ray spawnPositionHorizontalRay = new Ray(
             new Vector3(playerPosition.x, 5.9f, playerPosition.z),

@@ -5,7 +5,7 @@ using Zenject;
 
 public class SimpleWeapon : MonoBehaviour
 {
-    private SignalBus signalBus;
+    private SignalBus _signalBus;
     
     private float delay;
     
@@ -13,10 +13,13 @@ public class SimpleWeapon : MonoBehaviour
 
     public float shootRate;
 
+    public AudioSource audioSource;
+
     [Inject]
     public void Construct(SignalBus signalBus)
     {
-        this.signalBus = signalBus;
+        _signalBus = signalBus;
+        audioSource = GetComponent<AudioSource>();
     }
     
 	
@@ -28,6 +31,7 @@ public class SimpleWeapon : MonoBehaviour
     void Shoot()
     {
         delay = Time.time + shootRate;
-        signalBus.Fire<PlayerShootSignal>();
+        _signalBus.Fire<PlayerShootSignal>();
+        audioSource.Play();
     }
 }

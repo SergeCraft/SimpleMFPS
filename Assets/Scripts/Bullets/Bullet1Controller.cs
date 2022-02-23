@@ -7,7 +7,7 @@ public class Bullet1Controller : MonoBehaviour
 {
     private SignalBus _signalBus;
     private Vector3 _direction;
-    private float _speed = 4.0f;
+    private float _speed = 6.0f;
     public Color Color;
     
 

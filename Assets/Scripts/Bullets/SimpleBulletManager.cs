@@ -28,6 +28,7 @@ public class SimpleBulletManager: IBulletManager, IDisposable
         _signalBus.Subscribe<PlayerShootSignal>(OnPlayerShoot);
         _signalBus.Subscribe<BulletDestroySignal>(OnBulletDestroy);
         _signalBus.Subscribe<TrophyPickedSignal>(OnTrophyPicked);
+        _signalBus.Subscribe<GameRestartSignal>(OnGameRestart);
     }
 
 
@@ -40,6 +41,8 @@ public class SimpleBulletManager: IBulletManager, IDisposable
         
         _signalBus.Unsubscribe<PlayerShootSignal>(OnPlayerShoot);
         _signalBus.Unsubscribe<BulletDestroySignal>(OnBulletDestroy);
+        _signalBus.Unsubscribe<TrophyPickedSignal>(OnTrophyPicked);
+        _signalBus.Unsubscribe<GameRestartSignal>(OnGameRestart);
     }
 
     #endregion
@@ -74,6 +77,11 @@ public class SimpleBulletManager: IBulletManager, IDisposable
     private void OnTrophyPicked(TrophyPickedSignal args)
     {
         _actualColor = Helper.TrophyTypeToColor(args.Trophy.GetComponent<Trophy1Controller>().Type);
+    }
+    
+    private void OnGameRestart()
+    {
+        _actualColor = Color.black;
     }
 
     #endregion

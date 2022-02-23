@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e6b417d-4ee4-4a5c-a3ab-c1abd72a7ac7" name="Changes" comment="" />
+    <list default="true" id="6e6b417d-4ee4-4a5c-a3ab-c1abd72a7ac7" name="Changes" comment="Updated README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SimpleMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SimpleMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullets/Bullet1Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullets/Bullet1Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullets/SimpleBulletManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullets/SimpleBulletManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/SimplePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/SimplePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/8b/243599c1/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/b9/2583d81d/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Unity Projects/SimpleMFPS/Assets/Resources/Prefabs/3rdParty/EYESTRIP/MFPC/MFPControllerMod.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/69/b16ebe2a/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/Unity Projects/SimpleMFPS/Assets/Scripts/Player/MFPControllerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -94,6 +98,7 @@
       <workItem from="1645468147485" duration="12588000" />
       <workItem from="1645606303077" duration="34747000" />
       <workItem from="1645654223783" duration="1669000" />
+      <workItem from="1645655953166" duration="1036000" />
     </task>
     <task id="LOCAL-00001" summary="Added minimal settings classes, updated README.md">
       <created>1645091170366</created>
@@ -221,7 +226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645655743029</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Some pre-merge fixes">
+      <created>1645656025078</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1645656025078</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Updated README.md">
+      <created>1645656173373</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1645656173373</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
@@ -242,7 +261,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added minimal settings classes, updated README.md" />
     <MESSAGE value="Added main and player classes scratches, moved MFPC prefab to resource directory" />
-    <MESSAGE value="Updated README.md" />
     <MESSAGE value="Set player HP handling and respawn, added score" />
     <MESSAGE value="Added basic trphy logic" />
     <MESSAGE value="Added helper methods, bullet scratches, enemy manager logic" />
@@ -258,7 +276,9 @@
     <MESSAGE value="Added sound files" />
     <MESSAGE value="Added pickup sound logic" />
     <MESSAGE value="Sound fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sound fix" />
+    <MESSAGE value="Some pre-merge fixes" />
+    <MESSAGE value="Updated README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

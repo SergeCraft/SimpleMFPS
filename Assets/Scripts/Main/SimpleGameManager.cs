@@ -32,6 +32,8 @@ public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitiali
         Settings = stg;
         _playerManager = playerMgr;
         _signalBus = signalBus;
+        
+        _signalBus.Subscribe<PlayerDeadSignal>(OnPlayerDead);
     }
 
 
@@ -47,10 +49,11 @@ public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitiali
 
     public void Dispose()
     {
-        ;
+        _signalBus.Unsubscribe<PlayerDeadSignal>(OnPlayerDead); ;
     }
-    
-    
+
+
+
     public void Tick()
     {
         ;
@@ -76,6 +79,11 @@ public class SimpleGameManager : IGameManager, IDisposable, ITickable, IInitiali
     #endregion
 
     #region Event handlers
+    
+    private void OnPlayerDead(PlayerDeadSignal obj)
+    {
+        _signalBus.Fire<GameRestartSignal>();
+    }
     
     #endregion
 

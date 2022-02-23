@@ -11,7 +11,7 @@ public class SimpleWeapon : MonoBehaviour
     
     public FP_Input playerInput;
 
-    public float shootRate = 0.15F;
+    public float shootRate;
 
     [Inject]
     public void Construct(SignalBus signalBus)
@@ -19,22 +19,15 @@ public class SimpleWeapon : MonoBehaviour
         this.signalBus = signalBus;
     }
     
-    void Start () 
-    {
-        
-    }
 	
     void Update () 
     {
-        if(playerInput.Shoot())
-            if(Time.time > delay)
-                Shoot();
+        if(playerInput.Shoot() && Time.time > delay) Shoot();
     }
 
     void Shoot()
     {
-        Debug.Log("Simple bang");
-        signalBus.Fire<PlayerShootSignal>();
         delay = Time.time + shootRate;
+        signalBus.Fire<PlayerShootSignal>();
     }
 }

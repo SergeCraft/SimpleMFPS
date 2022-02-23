@@ -17,7 +17,6 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     private ISettings _settings;
     private Bounds _levelBounds;
     private float _lastSpawnTime;
-    private bool _isEnemySpawnActive;
 
     private readonly Enemy1Controller.Factory _enemyFactory;
 
@@ -48,7 +47,6 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         _settings = settings;
         _levelBounds = GetLevelBounds();
         _lastSpawnTime = Time.time;
-        _isEnemySpawnActive = false;
         _enemyFactory = enemyFactory;
         
 
@@ -106,7 +104,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     private void TrySpawnEnemy()
     {
-        if(_isEnemySpawnActive && Time.time - _lastSpawnTime >= 3.0f) SpawnEnemy();
+        if(Time.time - _lastSpawnTime >= 3.0f) SpawnEnemy();
     }
 
     private Vector3 GetSpawnPosition()
@@ -143,8 +141,12 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     public void OnGameRestart()
     {
+        foreach (var enemy in Enemies)
+        {
+            GameObject.Destroy(enemy.gameObject);
+        }
+        Enemies = new List<MonoBehaviour>();
         
-        _isEnemySpawnActive = true;
     }
 
     #endregion

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6e6b417d-4ee4-4a5c-a3ab-c1abd72a7ac7" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="_Feature_player" />
+      </map>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/13/0ff4b6ee/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/8b/243599c1/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695d1cc93cca45069c528c15c9fdd7493e2800/b9/2583d81d/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/Unity Projects/SimpleMFPS/Assets/Resources/Prefabs/3rdParty/EYESTRIP/MFPC/MFPControllerMod.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0ee480759f3d481d82ada245dc74f9fd13be00/69/b16ebe2a/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/Unity Projects/SimpleMFPS/Assets/Scripts/Player/MFPControllerExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="25E9B8RwoX4Hplj5gifd3fcnalf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.5035461" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e6b417d-4ee4-4a5c-a3ab-c1abd72a7ac7" name="Changes" comment="" />
+      <created>1645081246130</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645081246130</updated>
+      <workItem from="1645081263651" duration="24772000" />
+      <workItem from="1645179411685" duration="10398000" />
+      <workItem from="1645283879685" duration="289000" />
+      <workItem from="1645284193964" duration="595000" />
+      <workItem from="1645290748185" duration="16363000" />
+      <workItem from="1645365302690" duration="25228000" />
+      <workItem from="1645439396132" duration="5410000" />
+      <workItem from="1645468147485" duration="12588000" />
+      <workItem from="1645606303077" duration="34747000" />
+      <workItem from="1645654223783" duration="1669000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added minimal settings classes, updated README.md">
+      <created>1645091170366</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645091170366</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added main and player classes scratches, moved MFPC prefab to resource directory">
+      <created>1645131361918</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645131361918</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updated README.md">
+      <created>1645132065054</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645132065054</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Set player HP handling and respawn, added score">
+      <created>1645308258175</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645308258175</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added basic trphy logic">
+      <created>1645381975035</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645381975035</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added helper methods, bullet scratches, enemy manager logic">
+      <created>1645474689186</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645474689186</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Enemy spawn fix">
+      <created>1645475081339</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645475081340</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed enemy creating logic to Zenject/factory pattern">
+      <created>1645479491443</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645479491443</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix enemy spawn diriction">
+      <created>1645481256868</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1645481256868</updated>
+    </task>
+    <task id="LOCAL-00010" summary="One more fix enemy spawn">
+      <created>1645611498460</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645611498460</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Set up a simple movement logic for enemy">
+      <created>1645629819079</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1645629819079</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added shooting and trophy pickup logic">
+      <created>1645648933558</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1645648933558</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added enemy hit logic">
+      <created>1645649977135</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1645649977135</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Adjusted shoot rate, updatet game restart logic">
+      <created>1645651110860</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1645651110860</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added shooting sound">
+      <created>1645655394435</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1645655394435</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added sound files">
+      <created>1645655421016</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645655421016</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added pickup sound logic">
+      <created>1645655703078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645655703078</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Sound fix">
+      <created>1645655743029</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1645655743029</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added minimal settings classes, updated README.md" />
+    <MESSAGE value="Added main and player classes scratches, moved MFPC prefab to resource directory" />
+    <MESSAGE value="Updated README.md" />
+    <MESSAGE value="Set player HP handling and respawn, added score" />
+    <MESSAGE value="Added basic trphy logic" />
+    <MESSAGE value="Added helper methods, bullet scratches, enemy manager logic" />
+    <MESSAGE value="Enemy spawn fix" />
+    <MESSAGE value="Changed enemy creating logic to Zenject/factory pattern" />
+    <MESSAGE value="Fix enemy spawn diriction" />
+    <MESSAGE value="One more fix enemy spawn" />
+    <MESSAGE value="Set up a simple movement logic for enemy" />
+    <MESSAGE value="Added shooting and trophy pickup logic" />
+    <MESSAGE value="Added enemy hit logic" />
+    <MESSAGE value="Adjusted shoot rate, updatet game restart logic" />
+    <MESSAGE value="Added shooting sound" />
+    <MESSAGE value="Added sound files" />
+    <MESSAGE value="Added pickup sound logic" />
+    <MESSAGE value="Sound fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sound fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Frame#SimplePlayerManager.SetSimpleWeapon" memberName="weapon" />
+        <PinnedItemInfo parentTag="Type#UnityEngine.ControllerColliderHit" memberName="gameObject" />
+        <PinnedItemInfo parentTag="Type#UnityEngine.Transform" memberName="eulerAngles" />
+        <PinnedItemInfo parentTag="Frame#Enemy1Controller.MoveToPlayer" memberName="this" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

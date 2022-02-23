@@ -23,20 +23,20 @@ Game should represents an mobile first person shooter, designed for Android mobi
 - [x] Model bullet
 - [x] Code settings
 - [x] Code game manager and entrypoint
-- [ ] Code event system
-- [ ] Code player manager
-- [ ] Code enemy spawner
-- [ ] Code enemy controller (moving, attack, HP, config, dying)
-- [ ] Code bullet spawner
-- [ ] Code bullet controller
-- [ ] Code trophy spawner
-- [ ] Code trophy controller
-- [ ] Extend default player controller with HP, scoring
-- [ ] Cutout unnecessary player comtroller behavior
-- [ ] Extend UI with scoring, HP
-- [ ] Extend player controller with scoring, HP
-- [ ] Add shooting sound (optional)
-- [ ] Add trophy pickup sound (optional)
+- [x] Code event system
+- [x] Code player manager
+- [x] Code enemy spawner
+- [x] Code enemy controller (moving, attack, HP, config, dying)
+- [x] Code bullet spawner
+- [x] Code bullet controller
+- [x] Code trophy spawner
+- [x] Code trophy controller
+- [x] Extend default player controller with HP, scoring
+- [x] Cutout unnecessary player comtroller behavior
+- [x] Extend UI with scoring, HP
+- [x] Extend player controller with scoring, HP
+- [x] Add shooting sound (optional)
+- [x] Add trophy pickup sound (optional)
 
 ---
 

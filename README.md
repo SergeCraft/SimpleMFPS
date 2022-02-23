@@ -6,6 +6,16 @@
 
 This is a test task for vacancy of Unity developer.
 Game should represents an mobile first person shooter, designed for Android mobile device. 
+---
+
+<img src="https://drive.google.com/uc?export=view&id=1-OmgJ4BjkzARQIez4yKwY23AXkCcoU6k" alt="screenshot1" width="300"/></br>
+
+---
+
+## Builds
+Actual Android build may be downloaded from 
+<a href="https://drive.google.com/uc?export=download&id=1-WA10oFViJcms3RHIKcsp-5Tlmkn66yA">here</a>
+(may be some time delays with download and warnings)
 
 ---
 

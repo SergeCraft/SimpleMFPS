@@ -10,29 +10,29 @@ public class SimpleTrophyManager : ITrophyManager, IDisposable
     #region Fields
 
     private SignalBus _signalBus;
-
-    private int _lastID;
+    private Trophy1Controller.Factory _factory;
+    private Vector3 _positionOffset = new Vector3(0.0f, 1.0f, 0.0f);
 
     #endregion
 
     #region Properties
 
-    public List<ITrophy> Trophies { get; private set; }
+    public List<MonoBehaviour> Trophies { get; private set; }
 
     #endregion
 
     #region Constructors
 
-    public SimpleTrophyManager(SignalBus signalBus)
+    public SimpleTrophyManager(SignalBus signalBus, Trophy1Controller.Factory trophyFactory)
     {
         _signalBus = signalBus;
+        _factory = trophyFactory;
+        
         _signalBus.Subscribe<GameRestartSignal>(OnGameRestart);
         _signalBus.Subscribe<EnemyDeadSignal>(OnEnemyDead);
         _signalBus.Subscribe<TrophyPickedSignal>(OnPlayerPickedTrophy);
 
-        _lastID = 0;
-
-        Trophies = new List<ITrophy>();
+        Trophies = new List<MonoBehaviour>();
         
         Debug.Log("Simple trophy manager instantiated");
     }
@@ -54,6 +54,11 @@ public class SimpleTrophyManager : ITrophyManager, IDisposable
 
     #region Private methods
 
+    private void SpawnTrophy(Vector3 initPosition)
+    {
+        Trophies.Add(_factory.Create(new Trophy1Controller.InitSettings(
+            initPosition + _positionOffset)));
+    }
 
     #endregion
 
@@ -61,20 +66,23 @@ public class SimpleTrophyManager : ITrophyManager, IDisposable
     
     public void OnGameRestart()
     {
-        Trophies = new List<ITrophy>();
+        foreach (var trophy in Trophies)
+        {
+            GameObject.Destroy(trophy.gameObject);
+        }
+        Trophies = new List<MonoBehaviour>();
     }
 
     public void OnEnemyDead(EnemyDeadSignal args)
     {
-        TrophyTypes randomTrophyType = (TrophyTypes) Random.Range(1, 3);
-        Trophies.Add(new SimpleTrophy(
-            _lastID++,
-            args.Enemy.transform.position));
+        SpawnTrophy(args.Enemy.transform.position);
     }
+
 
     public void OnPlayerPickedTrophy(TrophyPickedSignal args)
     {
-        Trophies.RemoveAll(x => x.ID == args.TrophyID);
+        Trophies.Remove(args.Trophy);
+        GameObject.Destroy(args.Trophy.gameObject);
     }
     
     #endregion

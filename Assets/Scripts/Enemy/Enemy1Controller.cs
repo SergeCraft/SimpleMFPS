@@ -70,10 +70,6 @@ public class Enemy1Controller : MonoBehaviour
     {
         if (!_isGrounded)
         {
-            // _actualSpeed.y = Mathf.Abs(_actualSpeed.y) < _speedLimit.y? 
-            //     _actualSpeed.y + Physics.gravity.y / 5 * Time.deltaTime 
-            //     : Mathf.Sign(_actualSpeed.y) *_speedLimit.y;
-            // transform.Translate(_actualSpeed * Time.deltaTime, Space.World);
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 new Vector3(transform.position.x, 0.0f,transform.position.z),

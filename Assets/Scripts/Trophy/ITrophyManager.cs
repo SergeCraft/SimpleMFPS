@@ -1,12 +1,13 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public interface ITrophyManager
 {
     #region Properties
 
-    List<ITrophy> Trophies { get; }
+    List<MonoBehaviour> Trophies { get; }
 
     #endregion
 

@@ -55,6 +55,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
         Enemies = new List<MonoBehaviour>();
         
         _signalBus.Subscribe<GameRestartSignal>(OnGameRestart);
+        _signalBus.Subscribe<EnemyDeadSignal>(OnEnemyDead);
         
         Debug.Log("Simple enemy manager instantiated");
     }
@@ -78,6 +79,7 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
     public void Dispose()
     {
         _signalBus.Unsubscribe<GameRestartSignal>(OnGameRestart);
+        _signalBus.Unsubscribe<EnemyDeadSignal>(OnEnemyDead);
     }
 
     
@@ -135,8 +137,8 @@ public class SimpleEnemyManager : IEnemyManager, ITickable, IDisposable, IInitia
 
     public void OnEnemyDead(EnemyDeadSignal args)
     {
-        Debug.Log("Enemy dead signal captured by manager");
         Enemies.Remove(args.Enemy);
+        GameObject.Destroy(args.Enemy.gameObject);
     }
 
     public void OnGameRestart()

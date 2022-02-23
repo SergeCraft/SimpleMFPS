@@ -34,7 +34,7 @@ public class SimpleWeapon : MonoBehaviour
     void Shoot()
     {
         Debug.Log("Simple bang");
-        signalBus.Fire(new PlayerHitSignal(15));
+        signalBus.Fire<PlayerShootSignal>();
         delay = Time.time + shootRate;
     }
 }

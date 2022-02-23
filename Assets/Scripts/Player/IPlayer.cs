@@ -19,6 +19,8 @@ public interface IPlayer
     SignalBus SignalBus { get; }
     
     PlayerStates State { get; }
+    
+    TrophyTypes WeaponType { get; }
 
     #endregion
 

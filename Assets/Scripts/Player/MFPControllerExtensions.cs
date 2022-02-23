@@ -9,21 +9,13 @@ public class MFPControllerExtensions : MonoBehaviour
 
     private SignalBus _signalBus;
 
+    [Inject]
     public void Construct(SignalBus signalBus)
     {
         _signalBus = signalBus;
     }
     
-    // void Start()
-    // {
-    //     Debug.Log("MFPC extension pack greeting");
-    // }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -33,8 +25,13 @@ public class MFPControllerExtensions : MonoBehaviour
             case "Level":
                 break;
             case "Trophy":
-                _signalBus.Fire(new TrophyPickedSignal(hit.gameObject.GetComponent<Trophy1Controller>().ID));
+                _signalBus.Fire(new TrophyPickedSignal(hit.gameObject.GetComponent<Trophy1Controller>()));
                 break;
         }
+    }
+
+    public void OnAnimationEvent(string message)
+    {
+        Debug.Log(message);
     }
 }

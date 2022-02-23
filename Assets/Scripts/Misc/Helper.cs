@@ -13,19 +13,18 @@ public static class Helper
         return RadianToVector3((degree) * Mathf.Deg2Rad);
     }
 
-    public static float GetPositiveDegrees(float undefinedDeg)
+    public static Color TrophyTypeToColor(TrophyTypes type)
     {
-        if (undefinedDeg < 0)
+        switch (type)
         {
-            return undefinedDeg + 360;
-        }
-        else if (undefinedDeg >= 360)
-        {
-            return undefinedDeg - 360;
-        }
-        else
-        {
-            return undefinedDeg;
-        }
+            case TrophyTypes.Green:
+                return Color.green;
+            case TrophyTypes.Red:
+                return Color.red;
+            case TrophyTypes.Yellow:
+                return Color.yellow;
+            default:
+                return Color.black;
+        };
     }
 }

@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using Zenject;
 
 public class TestGameEvent {}
 
@@ -18,7 +19,6 @@ public class PlayerDeadSignal
     
 }
 
-
 public class GameRestartSignal
 {
     
@@ -36,10 +36,25 @@ public class EnemyDeadSignal
 
 public class TrophyPickedSignal
 {
-    public int TrophyID { get; private set; }
+    public MonoBehaviour Trophy { get; private set; }
 
-    public TrophyPickedSignal(int trophyID)
+    public TrophyPickedSignal(MonoBehaviour trophy)
     {
-        TrophyID = trophyID;
+        Trophy = trophy;
     }
+}
+
+public class BulletDestroySignal
+{
+    public MonoBehaviour Bullet { get; private set; }
+    
+    public BulletDestroySignal(MonoBehaviour bulletController)
+    {
+        Bullet = bulletController;
+    }
+}
+
+public class PlayerShootSignal
+{
+    
 }

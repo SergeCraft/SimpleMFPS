@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class SimplePlayer: IPlayer, IDisposable
     private ISettings _settings;
     private int _hp;
     private List<int> _score;
+    
 
     #endregion
     
@@ -51,6 +53,8 @@ public class SimplePlayer: IPlayer, IDisposable
     {
         get; private set;
     }
+    
+    public TrophyTypes WeaponType { get; private set; }
 
     #endregion
 
@@ -62,11 +66,13 @@ public class SimplePlayer: IPlayer, IDisposable
         SignalBus = signalBus;
         MFPController = GameObject.Find("MFPControllerMod(Clone)");
         MFPController.name = "Player";
-
+        WeaponType = TrophyTypes.Undefined;
         State = PlayerStates.NotSpawned;
 
         SignalBus.Subscribe<PlayerHitSignal>(OnPlayerTakeHit);
+        SignalBus.Subscribe<TrophyPickedSignal>(OnTrophyPicked);
     }
+
 
     #endregion
 
@@ -88,6 +94,24 @@ public class SimplePlayer: IPlayer, IDisposable
         HP = 100;
         Score = new List<int>(3){0, 0 ,0};
         State = PlayerStates.Alive;
+    }
+    
+    
+    private void AddScore(TrophyTypes trophyType)
+    {
+        switch (trophyType)
+        {
+            case TrophyTypes.Red:
+                _score[0]++;
+                break;
+            case TrophyTypes.Green:
+                _score[1]++;
+                break;
+            case TrophyTypes.Yellow:
+                _score[2]++;
+                break;
+        }
+        OnScoreChanged(_score);
     }
 
     #endregion
@@ -128,6 +152,14 @@ public class SimplePlayer: IPlayer, IDisposable
             SignalBus.Fire<PlayerDeadSignal>();
         }
     }
+    
+    private void OnTrophyPicked(TrophyPickedSignal args)
+    {
+        var trophyType = args.Trophy.gameObject.GetComponent<Trophy1Controller>().Type;
+        WeaponType = trophyType;
+        AddScore(trophyType);
+    }
+
 
     #endregion
 
